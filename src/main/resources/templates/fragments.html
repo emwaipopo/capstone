@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title th:text="${title}">Kids Events</title>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+</head>
+<body>
+<nav th:fragment="header">
+    <h1 th:text="${title}">Kids Events</h1>
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
+    </ul>
+</nav>
+<nav th:fragment="header2">
+    <h1 th:text="${title}">Kids Events</h1>
+</nav>
+</body>
+</html>
