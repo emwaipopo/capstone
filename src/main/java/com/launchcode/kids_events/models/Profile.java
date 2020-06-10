@@ -1,19 +1,21 @@
 package com.launchcode.kids_events.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Objects;
 
 @Entity
-public class UserProfile {
+public class Profile {
 
     @Id
     @GeneratedValue
     private int id;
 
-    private int addressId;
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     private String firstName;
 
@@ -28,17 +30,32 @@ public class UserProfile {
     @Email
     private String email;
 
-    private int userId;
+    public Profile(){}
 
-    public UserProfile(){}
+    public Profile(Address address, User user) {
+        super();
+        this.address = address;
+        this.user = user;
+    }
 
-    public UserProfile(String firstName, String lastName, String dob, String gender, String phoneNumber, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dob = dob;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -98,7 +115,7 @@ public class UserProfile {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserProfile that = (UserProfile) o;
+        Profile that = (Profile) o;
         return id == that.id;
     }
 

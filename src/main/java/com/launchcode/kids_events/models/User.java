@@ -2,9 +2,7 @@ package com.launchcode.kids_events.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -15,13 +13,14 @@ public class User{
     @GeneratedValue
     private int id;
 
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
     @NotNull
     private String username;
 
     @NotNull
     private String pwHash;
-
-    //private String role;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 

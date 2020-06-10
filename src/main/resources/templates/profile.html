@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head">
+
+    <body class="container">
+        <div class="container" th:replace="fragments :: page-header"></div>
+        <div class="container" th:replace="fragments :: menu-bar2"></div>
+        <form method="post">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>First Name
+                            <input class="form-control" th:field="${profile.firstName}" />
+                        </label>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Last Name
+                            <input class="form-control" th:field="${profile.lastName}" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Date Of Birth
+                            <input class="form-control" th:field="${profile.dob}" />
+                        </label>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Gender
+                            <input class="form-control" th:field="${profile.gender}" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Username
+                            <input class="form-control" th:field="${registerFormDTO.username}" />
+                        </label>
+                        <p class="error" th:errors="${registerFormDTO.username}"></p>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Password
+                            <input class="form-control" th:field="${registerFormDTO.password}" type="password"/>
+                        </label>
+                        <p class="error" th:errors="${registerFormDTO.password}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>
+                            <!--Leave This block Empty   -->
+                        </label>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Verify Password
+                            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
+                        </label>
+                        <p class="error" th:errors="${registerFormDTO.verifyPassword}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Street Address
+                            <input class="form-control" th:field="${profile.address.address1}" />
+                        </label>
+                        <p class="error" th:errors="${profile.address.address1}"></p>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Street Address 2
+                            <input class="form-control" th:field="${profile.address.address2}" />
+                        </label>
+                        <p class="error" th:errors="${profile.address.address2}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>City
+                            <input class="form-control" th:field="${profile.address.city}" />
+                        </label>
+                        <p class="error" th:errors="${profile.address.city}"></p>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>State
+                            <input class="form-control" th:field="${profile.address.state}" />
+                        </label>
+                        <p class="error" th:errors="${profile.address.state}"></p>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Zip Code
+                            <input class="form-control" th:field="${profile.address.zipCode}" />
+                        </label>
+                        <p class="error" th:errors="${profile.address.zipCode}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Phone Number
+                            <input class="form-control" th:field="${profile.phoneNumber}" />
+                        </label>
+                        <p class="error" th:errors="${profile.phoneNumber}"></p>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Email
+                            <input class="form-control" th:field="${profile.email}" />
+                        </label>
+                        <p class="error" th:errors="${profile.email}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" class="btn btn-primary" value="Save Profile" />
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
