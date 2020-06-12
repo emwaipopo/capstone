@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+    <div class="container" th:replace="fragments :: page-header"></div>
+    <div class="container" th:replace="fragments :: menu-bar2"></div>
+    <div class="container" th:replace="fragments :: title-search-bar"></div>
+    <form method="post" th:object="${buttonActionDTO}">
+        <div class="form-group">
+            <div class="col-sm-6">
+                <div class="row form-group">
+                    <label>Date
+                        <input th:field="${events.date}" class="form-control">
+                    </label>
+                    <p class="error" th:errors="${events.date}"></p>
+                </div>
+                <div class="row form-group">
+                    <label>Event Title
+                        <input th:field="${events.name}" class="form-control" />
+                    </label>
+                    <p class="error" th:errors="${events.name}"></p>
+                </div>
+                <div class="row form-group">
+                    <label>Description
+                        <textarea th:field="${events.description}" class="form-control" th:rows="6"></textarea>
+                    </label>
+                    <p class="error" th:errors="${events.description}"></p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row form-group">
+                    <label>Street Address1
+                        <input th:field="${events.address.address1}" class="form-control" />
+                    </label>
+                    <p class="error" th:errors="${events.address.address1}"></p>
+                </div>
+                <div class="row form-group">
+                    <label>Street Address2
+                        <input th:field="${events.address.address2}" class="form-control" />
+                    </label>
+                    <p class="error" th:errors="${events.address.address2}"></p>
+                </div>
+                <div class="row form-group">
+                    <label>City
+                        <input th:field="${events.address.city}" class="form-control" />
+                    </label>
+                    <p class="error" th:errors="${events.address.city}"></p>
+                </div>
+                <div class="row form-group">
+                    <label>State
+                        <input th:field="${events.address.state}" class="form-control" />
+                    </label>
+                    <p class="error" th:errors="${events.address.state}"></p>
+                </div>
+                <div class="row form-group">
+                    <label>Zip Code
+                        <input th:field="${events.address.zipCode}" class="form-control" />
+                    </label>
+                    <p class="error" th:errors="${events.address.zipCode}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input name="userAction" type="submit" value="Save Event" class="btn btn-success">
+            <input name="userAction" type="submit" value="Delete Event" class="btn btn-danger">
+        </div>
+    </form>
+    </body>
+</html>

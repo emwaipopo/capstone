@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+        <div class="container" th:replace="fragments :: page-header"></div>
+        <div class="container" th:replace="fragments :: menu-bar2"></div>
+        <div class="container" th:replace="fragments :: title-search-bar"></div>
+
+        <div class="container">
+            <table class="table table-striped">
+                <tr><a th:href="@{profile}">Add User</a></tr>
+                    <tr><td>
+                        <th:block th:each="profile : ${profiles}">
+                            <a th:href="'profile?profileId=' + ${profile.id}" th:text = "${profile.user.role} + ' --> ' + ${profile.firstName} + ' ' + ${profile.lastName}"></a><br>
+                        </th:block>
+                    </td></tr>
+            </table>
+        </div>
+    </body>
+</html>

@@ -5,6 +5,7 @@
     <body class="container">
         <div class="container" th:replace="fragments :: page-header"></div>
         <div class="container" th:replace="fragments :: menu-bar"></div>
+        <h2 th:text="${title}"></h2>
         <form method="post">
             <div class="form-group">
                 <label>Username

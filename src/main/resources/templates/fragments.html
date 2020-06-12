@@ -20,8 +20,10 @@
                     <img src="profile.jpg" class="img-thumbnail" alt="avatar">
                 </div>
                 <div class="nav navbar-nav navbar-right">
-                    <p>User Name</p>
-<!--                    <p><a th:href="'/profile/' + ${profile.address.id}">View Profile</a></p>-->
+                    <ul>
+                        <li>Welcome, Guest!</li>
+                        <li>Login <a th:href="@{/login}">Here</a></li>
+                    </ul>
                 </div>
 
             </Div>
@@ -32,15 +34,8 @@
     <nav class="navbar navbar-inverse" style="background: aqua">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Page 1-1</a></li>
-                        <li><a href="#">Page 1-2</a></li>
-                        <li><a href="#">Page 1-3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Page 2</a></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/event/add">Calendar</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a th:href="@{/register}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -53,19 +48,26 @@
     <nav class="navbar navbar-inverse" style="background: aqua">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Page 1-1</a></li>
-                        <li><a href="#">Page 1-2</a></li>
-                        <li><a href="#">Page 1-3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Page 2</a></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/events/index">Events</a></li>
+                <li><a href="/profiles/index">Families</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
             </ul>
+        </div>
+    </nav>
+</div>
+<div th:fragment="title-search-bar">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <h2 th:text="${title}"></h2>
+            </ul>
+            <form class="form-inline nav navbar-nav navbar-right">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 </div>

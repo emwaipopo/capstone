@@ -2,6 +2,8 @@ package com.launchcode.kids_events.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +18,12 @@ public class Profile {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Address address;
+
+    @ManyToMany
+    @JoinTable(name = "profile_event",
+            joinColumns = @JoinColumn(name = "profile_id"),
+            inverseJoinColumns = @JoinColumn(name = "events_id"))
+    private List<Events> events = new ArrayList<Events>();
 
     private String firstName;
 

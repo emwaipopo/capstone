@@ -5,7 +5,8 @@
     <body class="container">
         <div class="container" th:replace="fragments :: page-header"></div>
         <div class="container" th:replace="fragments :: menu-bar2"></div>
-        <form method="post">
+        <div class="container" th:replace="fragments :: title-search-bar"></div>
+        <form method="post" th:object="${buttonActionDTO}">
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6 form-group">
@@ -34,28 +35,41 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label>Username
-                            <input class="form-control" th:field="${registerFormDTO.username}" />
+                            <input class="form-control" th:field="${registerFormDTO.username}"/>
                         </label>
                         <p class="error" th:errors="${registerFormDTO.username}"></p>
                     </div>
                     <div class="col-sm-6 form-group">
                         <label>Password
-                            <input class="form-control" th:field="${registerFormDTO.password}" type="password"/>
+                            <th:block th:if="${restricted}">
+                                <input class="form-control" field="Do Not Edit" type="password"/>
+                            </th:block>
+                            <th:block th:unless="${restricted}">
+                                <input class="form-control" th:field="${registerFormDTO.password}" type="password"/>
+                            </th:block>
                         </label>
-                        <p class="error" th:errors="${registerFormDTO.password}"></p>
+<!--                        <p class="error" th:errors="${registerFormDTO.password}"></p>-->
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <label>
-                            <!--Leave This block Empty   -->
+                        <label>User Role:<br>
+                                <input type="radio" value="parent" th:field="${registerFormDTO.role}" >
+                                <label>Parent</label>
+                                <input type="radio" value="child" th:field="${registerFormDTO.role}" >
+                                <label>Child</label>
                         </label>
                     </div>
                     <div class="col-sm-6 form-group">
                         <label>Verify Password
-                            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
+                            <th:block th:if="${restricted}">
+                                <input class="form-control" field="Do Not Edit" type="password"/>
+                            </th:block>
+                            <th:block th:unless="${restricted}">
+                                <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
+                            </th:block>
                         </label>
-                        <p class="error" th:errors="${registerFormDTO.verifyPassword}"></p>
+<!--                        <p class="error" th:errors="${registerFormDTO.verifyPassword}"></p>-->
                     </div>
                 </div>
                 <div class="row">
@@ -106,8 +120,9 @@
                         <p class="error" th:errors="${profile.email}"></p>
                     </div>
                 </div>
-                <div class="row">
-                    <input type="submit" class="btn btn-primary" value="Save Profile" />
+                <div class="form-group row">
+                    <input name="userAction" type="submit" value="Save User" class="btn btn-success">
+                    <input name="userAction" type="submit" value="Delete User" class="btn btn-danger">
                 </div>
             </div>
         </form>

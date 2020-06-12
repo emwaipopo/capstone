@@ -14,6 +14,9 @@ public class Address {
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     private final List<Profile> profiles = new ArrayList<>();
 
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+    private final List<Events> events = new ArrayList<>();
+
     private String address1;
 
     private String address2;

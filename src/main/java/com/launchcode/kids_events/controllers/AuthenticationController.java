@@ -65,7 +65,7 @@ public class AuthenticationController {
 
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyExists", "A user with that username already exists");
-            model.addAttribute("title", "Register");
+            model.addAttribute("title", "Registration Failed! Try again.");
             return "register";
         }
 
@@ -73,11 +73,11 @@ public class AuthenticationController {
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-            model.addAttribute("title", "Register");
+            model.addAttribute("title", "Registration Failed! Try again.");
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getRole());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -114,17 +114,16 @@ public class AuthenticationController {
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
             model.addAttribute("title", "Log In");
-            return "login";
+            return "redirect:";
         }
 
         setUserInSession(request.getSession(), theUser);
-
-        return "redirect:";
+        return "index";
     }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/login";
+        return "redirect:";
     }
 }
